@@ -17,7 +17,8 @@ class PerformanceCategorySeeder extends Seeder
             'Compute',
             'Memory',
             'Disk',
-            'Network'
+            'Network',
+            'Private Network',
         ];
 
         foreach($performance_category_names as $performance_category_name) {

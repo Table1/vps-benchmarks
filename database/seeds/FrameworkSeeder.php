@@ -1,5 +1,7 @@
 <?php
 
+use App\Framework;
+
 use Illuminate\Database\Seeder;
 
 class FrameworkSeeder extends Seeder
@@ -11,6 +13,27 @@ class FrameworkSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $frameworks = [
+            [
+                'name' => 'Laravel',
+                'url' => 'https://laravel.com'
+            ],
+            [
+                'name' => 'Symfony',
+                'url' => 'https://symfony.com'
+            ],
+            [
+                'name' => 'Django',
+                'url' => 'https://www.djangoproject.com'
+            ],
+            [
+                'name' => 'Ruby on Rails',
+                'url' => 'https://rubyonrails.org'
+            ],
+        ];
+
+        foreach($frameworks as $framework) {
+            Framework::create($framework);
+        }        
     }
 }

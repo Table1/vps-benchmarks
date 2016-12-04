@@ -86,10 +86,6 @@ class ServiceSeeder extends Seeder
                 'name' => 'Redis',
                 'version' => '3.2',
             ],
-            [
-                'name' => 'memcached',
-                'version' => '1.4',
-            ],
         ];
 
         foreach($services as $service) {

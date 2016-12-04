@@ -20,7 +20,11 @@ class TestSuiteSeeder extends Seeder
             ],
             [
                 'name' => 'Geekbench',
-                'url' => 'http://geekbench.com/'
+                'url' => 'http://geekbench.com'
+            ],
+            [
+                'name' => 'Redis Benchmark',
+                'url' => 'https://redis.io/topics/benchmarks'
             ],
             [
                 'name' => 'Speedtest',

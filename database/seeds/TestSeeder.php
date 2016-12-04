@@ -15,136 +15,209 @@ class TestSeeder extends Seeder
     public function run()
     {
         $sysbench = TestSuite::where('name', 'sysbench')->first();
+        $geekbench = TestSuite::where('name', 'Geekbench')->first();
+        $redis_benchmark = TestSuite::where('name', 'Redis Benchmark')->first();
         $speedtest = TestSuite::where('name', 'Speedtest')->first();
 
         $test_suites = [
             $sysbench->id => [
                 [
                     'name' => 'CPU',
-                    'metric' => 'Execution Time',
+                    'measure' => 'Execution Time',
                     'unit' => 's'
                 ],
                 [
                     'name' => 'CPU',
-                    'metric' => 'Minimum Request',
+                    'measure' => 'Minimum Request',
                     'unit' => 'ms'
                 ],
                 [
                     'name' => 'CPU',
-                    'metric' => 'Average Request',
+                    'measure' => 'Average Request',
                     'unit' => 'ms'
                 ],
                 [
                     'name' => 'CPU',
-                    'metric' => 'Maximum Request',
+                    'measure' => 'Maximum Request',
                     'unit' => 'ms'
                 ],
                 [
                     'name' => 'Memory (Read)',
-                    'metric' => 'Execution Time',
+                    'measure' => 'Execution Time',
                     'unit' => 's'
                 ],
                 [
                     'name' => 'Memory (Read)',
-                    'metric' => 'Minimum Request',
+                    'measure' => 'Minimum Request',
                     'unit' => 'ms'
                 ],
                 [
                     'name' => 'Memory (Read)',
-                    'metric' => 'Average Request',
+                    'measure' => 'Average Request',
                     'unit' => 'ms'
                 ],
                 [
                     'name' => 'Memory (Read)',
-                    'metric' => 'Maximum Request',
+                    'measure' => 'Maximum Request',
                     'unit' => 'ms'
                 ],
                 [
                     'name' => 'Memory (Read)',
-                    'metric' => 'MB/sec',
+                    'measure' => 'MB/sec',
                 ],
                 [
                     'name' => 'Memory (Write)',
-                    'metric' => 'Execution Time',
+                    'measure' => 'Execution Time',
                     'unit' => 's'
                 ],
                 [
                     'name' => 'Memory (Write)',
-                    'metric' => 'Minimum Request',
+                    'measure' => 'Minimum Request',
                     'unit' => 'ms'
                 ],
                 [
                     'name' => 'Memory (Write)',
-                    'metric' => 'Average Request',
+                    'measure' => 'Average Request',
                     'unit' => 'ms'
                 ],
                 [
                     'name' => 'Memory (Write)',
-                    'metric' => 'Maximum Request',
+                    'measure' => 'Maximum Request',
                     'unit' => 'ms'
                 ],
                 [
                     'name' => 'Memory (Write)',
-                    'metric' => 'MB/sec',
+                    'measure' => 'MB/sec',
                 ],
                 [
                     'name' => 'File I/O',
-                    'metric' => 'Execution Time',
+                    'measure' => 'Execution Time',
                     'unit' => 's'
                 ],
                 [
                     'name' => 'File I/O',
-                    'metric' => 'Minimum Request',
+                    'measure' => 'Minimum Request',
                     'unit' => 'ms'
                 ],
                 [
                     'name' => 'File I/O',
-                    'metric' => 'Average Request',
+                    'measure' => 'Average Request',
                     'unit' => 'ms'
                 ],
                 [
                     'name' => 'File I/O',
-                    'metric' => 'Maximum Request',
+                    'measure' => 'Maximum Request',
                     'unit' => 'ms'
                 ],
                 [
                     'name' => 'File I/O',
-                    'metric' => 'Requests/sec',
+                    'measure' => 'Requests/sec',
                 ],
                 [
                     'name' => 'MySQL OLTP',
-                    'metric' => 'Execution Time',
+                    'measure' => 'Execution Time',
                     'unit' => 's'
                 ],
                 [
                     'name' => 'MySQL OLTP',
-                    'metric' => 'Minimum Request',
+                    'measure' => 'Minimum Request',
                     'unit' => 'ms'
                 ],
                 [
                     'name' => 'MySQL OLTP',
-                    'metric' => 'Average Request',
+                    'measure' => 'Average Request',
                     'unit' => 'ms'
                 ],
                 [
                     'name' => 'MySQL OLTP',
-                    'metric' => 'Maximum Request',
+                    'measure' => 'Maximum Request',
                     'unit' => 'ms'
                 ],
                 [
                     'name' => 'MySQL OLTP',
-                    'metric' => 'Read/write Requests/sec',
+                    'measure' => 'Read/write Requests/sec',
                 ],
             ],
             $speedtest->id => [
                 [
                     'name' => 'Download',
-                    'metric' => 'Mbit/sec',
+                    'measure' => 'Mbit/sec',
                 ],
                 [
                     'name' => 'Upload',
-                    'metric' => 'Mbit/sec',
+                    'measure' => 'Mbit/sec',
                 ],                
+            ],
+            $geekbench->id => [
+                [
+                    'name' => 'Single-core',
+                ],
+                [
+                    'name' => 'Multi-core',
+                ],                
+            ],
+            $redis_benchmark->id => [
+                [
+                    'name' => 'PING_INLINE',
+                    'measure' => 'Requests/sec',
+                ],
+                [
+                    'name' => 'PING_BULK',
+                    'measure' => 'Requests/sec',
+                ],
+                [
+                    'name' => 'SET',
+                    'measure' => 'Requests/sec',
+                ],
+                [
+                    'name' => 'GET',
+                    'measure' => 'Requests/sec',
+                ],
+                [
+                    'name' => 'INCR',
+                    'measure' => 'Requests/sec',
+                ],
+                [
+                    'name' => 'LPUSH',
+                    'measure' => 'Requests/sec',
+                ],
+                [
+                    'name' => 'LPOP',
+                    'measure' => 'Requests/sec',
+                ],
+                [
+                    'name' => 'SADD',
+                    'measure' => 'Requests/sec',
+                ],
+                [
+                    'name' => 'SPOP',
+                    'measure' => 'Requests/sec',
+                ],
+                [
+                    'name' => 'LPUSH',
+                    'measure' => 'Requests/sec',
+                ],
+                [
+                    'name' => 'LRANGE_100',
+                    'measure' => 'Requests/sec',
+                ],
+                [
+                    'name' => 'LRANGE_300',
+                    'measure' => 'Requests/sec',
+                ],
+                [
+                    'name' => 'LRANGE_500',
+                    'measure' => 'Requests/sec',
+                ],
+                [
+                    'name' => 'LRANGE_600',
+                    'measure' => 'Requests/sec',
+                ],
+                [
+                    'name' => 'MSET',
+                    'measure' => 'Requests/sec',
+                ],
+
             ],
         ];
 

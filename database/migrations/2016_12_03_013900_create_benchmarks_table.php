@@ -31,7 +31,8 @@ class CreateBenchmarksTable extends Migration
             $table->bigInteger('events')->index();
             $table->bigInteger('repititions')->index();
             $table->decimal('value', 10, 4)->index();
-
+            $table->text('comment');
+            
             $table->timestamp('performed')->useCurrent();
 
             $table->timestamps();

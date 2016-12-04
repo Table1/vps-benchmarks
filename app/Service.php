@@ -15,4 +15,16 @@ class Service extends Model
     {
         return $this->belongsToMany('App\PerformanceCategory')->withTimestamps();
     }
+
+    /**
+     * A service belongs to many tests.
+     *
+     * @return     Collection
+     */
+    public function tests()
+    {
+        return $this->belongsToMany('App\Test')->withTimestamps();
+    }
+
+
 }

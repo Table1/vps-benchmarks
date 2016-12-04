@@ -23,5 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PerformanceCategoryServiceSeeder::class);
         $this->call(TestSuiteSeeder::class);
         $this->call(TestSeeder::class);
+        $this->call(PerformanceCategoryTestSeeder::class);
+        $this->call(ServiceTestSeeder::class);
+        $this->call(FrameworkSeeder::class);
     }
 }

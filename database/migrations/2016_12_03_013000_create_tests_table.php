@@ -20,7 +20,7 @@ class CreateTestsTable extends Migration
             $table->foreign('test_suite_id')->references('id')->on('test_suites')->onDelete('cascade');      
 
             $table->string('name')->index();
-            $table->string('metric')->nullable();
+            $table->string('measure')->nullable();
             $table->string('unit')->nullable();
 
             $table->timestamps();

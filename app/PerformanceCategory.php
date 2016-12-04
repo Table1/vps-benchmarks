@@ -15,4 +15,14 @@ class PerformanceCategory extends Model
     {
         return $this->belongsToMany('App\Service')->withTimestamps();
     }
+
+    /**
+     * A performance category belongs to many services.
+     *
+     * @return     Collection
+     */
+    public function tests()
+    {
+        return $this->belongsToMany('App\Service')->withTimestamps();
+    }
 }
