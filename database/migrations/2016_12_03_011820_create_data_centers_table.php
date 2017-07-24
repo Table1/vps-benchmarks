@@ -20,6 +20,7 @@ class CreateDataCentersTable extends Migration
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
 
             $table->string('name');
+            $table->integer('api_id')->nullable();
 
             $table->string('location');
             $table->string('country');

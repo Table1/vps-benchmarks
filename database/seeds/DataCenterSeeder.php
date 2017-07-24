@@ -15,6 +15,7 @@ class DataCenterSeeder extends Seeder
     public function run()
     {
         $linode = Company::where('name', 'Linode')->first();
+
         $aws = Company::where('name', 'Amazon Web Services')->first();
         $digital_ocean = Company::where('name', 'Digital Ocean')->first();
         $vultr = Company::where('name', 'Vultr')->first();
@@ -23,49 +24,58 @@ class DataCenterSeeder extends Seeder
         $data_centers = [
             $linode->id => [
                 [
-                    'name' => 'US East',
-                    'location' => 'Newark',
-                    'country' => 'USA'
-                ],
-                [
-                    'name' => 'US South',
-                    'location' => 'Atlanta',
-                    'country' => 'USA'
-                ],
-                [
                     'name' => 'US Central',
                     'location' => 'Dallas',
-                    'country' => 'USA'
+                    'country' => 'USA',
+                    'api_id' => 2,
                 ],
                 [
                     'name' => 'US West',
                     'location' => 'Fremont',
-                    'country' => 'USA'
+                    'country' => 'USA',
+                    'api_id' => 3,
                 ],
                 [
-                    'name' => 'Frankfurt',
-                    'location' => 'Frankfurt',
-                    'country' => 'Germany'
+                    'name' => 'US South',
+                    'location' => 'Atlanta',
+                    'country' => 'USA',
+                    'api_id' => 4,
+                ],
+                [
+                    'name' => 'US East',
+                    'location' => 'Newark',
+                    'country' => 'USA',
+                    'api_id' => 6,
                 ],
                 [
                     'name' => 'London',
                     'location' => 'London',
-                    'country' => 'United Kingdom'
-                ],
-                [
-                    'name' => 'Singapore',
-                    'location' => 'Singapore',
-                    'country' => 'Singapore'
+                    'country' => 'United Kingdom',
+                    'api_id' => 7,
                 ],
                 [
                     'name' => 'Tokyo 1',
                     'location' => 'Tokyo',
-                    'country' => 'Japan'
+                    'country' => 'Japan',
+                    'api_id' => 8,
+                ],
+                [
+                    'name' => 'Singapore',
+                    'location' => 'Singapore',
+                    'country' => 'Singapore',
+                    'api_id' => 9,
+                ],
+                [
+                    'name' => 'Frankfurt',
+                    'location' => 'Frankfurt',
+                    'country' => 'Germany',
+                    'api_id' => 10,
                 ],
                 [
                     'name' => 'Tokyo 2',
                     'location' => 'Tokyo',
-                    'country' => 'Japan'
+                    'country' => 'Japan',
+                    'api_id' => 11,
                 ],
             ],
             $aws->id => [

@@ -20,7 +20,8 @@ class CreatePlansTable extends Migration
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
 
             $table->string('name');
-
+            $table->integer('api_id')->nullable();
+            
             $table->decimal('cost_per_hour', 10, 2)->index();
             $table->decimal('monthly_cap', 10, 2)->index();
 

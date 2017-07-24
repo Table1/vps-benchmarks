@@ -2,6 +2,7 @@
 
 use App\Plan;
 use App\Company;
+use App\Vps\LinodeVps;
 
 use Illuminate\Database\Seeder;
 
@@ -15,113 +16,28 @@ class PlanSeeder extends Seeder
     public function run()
     {
         $linode = Company::where('name', 'Linode')->first();
+        $linode_plans = collect((new LinodeVps)->avail->linodePlans());
+
+        foreach($linode_plans as $linode_plan) {
+            Plan::create([
+                'company_id' => $linode->id,
+                'name' => $linode_plan['LABEL'],
+                'api_id' => $linode_plan['PLANID'],
+                'cost_per_hour' => $linode_plan['HOURLY'],
+                'monthly_cap' => $linode_plan['PRICE'],
+                'cpu_cores' => $linode_plan['CORES'],
+                'memory' => $linode_plan['RAM'],
+                'storage' => $linode_plan['DISK'],
+                'transfer' => $linode_plan['XFER'],
+            ]);
+        }
+
         $aws = Company::where('name', 'Amazon Web Services')->first();
         $digital_ocean = Company::where('name', 'Digital Ocean')->first();
         $vultr = Company::where('name', 'Vultr')->first();
         $lightsail = Company::where('name', 'Amazon Lightsail')->first();
 
         $company_plans = [
-            $linode->id => [
-                [
-                    'name' => 'Linode 2GB',
-                    'cost_per_hour' => 0.015,
-                    'monthly_cap' => 10,
-                    'cpu_cores' => 1,
-                    'memory' => 2,
-                    'storage' => 24,
-                    'transfer' => 2,
-                    'network_in' => 4000,
-                    'network_out' => 125
-                ],
-                [
-                    'name' => 'Linode 4GB',
-                    'cost_per_hour' => 0.03,
-                    'monthly_cap' => 20,
-                    'cpu_cores' => 2,
-                    'memory' => 4,
-                    'storage' => 48,
-                    'transfer' => 3,
-                    'network_in' => 4000,
-                    'network_out' => 250
-                ],
-                [
-                    'name' => 'Linode 8GB',
-                    'cost_per_hour' => 0.06,
-                    'monthly_cap' => 40,
-                    'cpu_cores' => 4,
-                    'memory' => 8,
-                    'storage' => 96,
-                    'transfer' => 4,
-                    'network_in' => 4000,
-                    'network_out' => 125
-                ],
-                [
-                    'name' => 'Linode 12GB',
-                    'cost_per_hour' => 0.12,
-                    'monthly_cap' => 80,
-                    'cpu_cores' => 6,
-                    'memory' => 12,
-                    'storage' => 192,
-                    'transfer' => 8,
-                    'network_in' => 4000,
-                    'network_out' => 1000
-                ],
-                [
-                    'name' => 'Linode 24GB',
-                    'cost_per_hour' => 0.24,
-                    'monthly_cap' => 160,
-                    'cpu_cores' => 8,
-                    'memory' => 24,
-                    'storage' => 384,
-                    'transfer' => 16,
-                    'network_in' => 4000,
-                    'network_out' => 2000
-                ],
-                [
-                    'name' => 'Linode 48GB',
-                    'cost_per_hour' => 0.48,
-                    'monthly_cap' => 320,
-                    'cpu_cores' => 12,
-                    'memory' => 48,
-                    'storage' => 768,
-                    'transfer' => 20,
-                    'network_in' => 4000,
-                    'network_out' => 4000
-                ],
-                [
-                    'name' => 'Linode 64GB',
-                    'cost_per_hour' => 0.72,
-                    'monthly_cap' => 480,
-                    'cpu_cores' => 16,
-                    'memory' => 64,
-                    'storage' => 1152,
-                    'transfer' => 20,
-                    'network_in' => 4000,
-                    'network_out' => 6000
-                ],
-                [
-                    'name' => 'Linode 80GB',
-                    'cost_per_hour' => 0.96,
-                    'monthly_cap' => 640,
-                    'cpu_cores' => 20,
-                    'memory' => 80,
-                    'storage' => 1536,
-                    'transfer' => 20,
-                    'network_in' => 4000,
-                    'network_out' => 8000
-                ],
-                [
-                    'name' => 'Linode 120GB',
-                    'cost_per_hour' => 1.44,
-                    'monthly_cap' => 960,
-                    'cpu_cores' => 20,
-                    'memory' => 120,
-                    'storage' => 1920,
-                    'transfer' => 20,
-                    'network_in' => 4000,
-                    'network_out' => 10000
-                ],
-            ],
             $digital_ocean->id => [
                 [
                     'name' => 'Standard 512MB',
